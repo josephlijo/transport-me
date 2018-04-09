@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TransportMe.API.Entities
+namespace TransportMe.Infrastructure.Entities
 {
-    public class City
+    public class TransportMode
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -13,6 +13,7 @@ namespace TransportMe.API.Entities
         [MaxLength(50)]
         public string Name { get; set; }
 
-        public string Country { get; set; }
+        [MaxLength(200)]
+        public string Description { get; set; }
     }
 }
