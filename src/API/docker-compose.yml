@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  transportme.api:
+    image: ${DOCKER_REGISTRY}transportmeapi
+    build:
+      context: .
+      dockerfile: TransportMe.API\Dockerfile
