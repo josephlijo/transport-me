@@ -40,5 +40,26 @@ Make sure that the reference is in the *.csproj file.
 - Use `appsettings.json` for non-sensitive data, use `environment variables` for sensitive information. 
 - [Connection string in Azure](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb#configure-an-environment-variable)
 
+### Seeding data
+- There is a [PR](https://github.com/aspnet/EntityFrameworkCore/issues/629) for seeding data issue with EF Core (It might be available in 2.1 version). Update [here](https://github.com/aspnet/EntityFrameworkCore/pull/9996)
+- We can use an extension method to write the seed information and then call this method when we configure the request-response pipeline in `Configure` method as explained [here](https://www.learnentityframeworkcore.com/migrations/seeding)
+- [Seed data sample and issue](https://github.com/aspnet/EntityFrameworkCore/issues/11114)
+- Update as of now - Seeding data in `OnModelCreating(ModelBuilder modelBuilder)`
+```
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<City>().ToTable("City");
+            modelBuilder.Entity<TransportMode>().ToTable("TransportMode");
+            modelBuilder.Entity<TransportService>().ToTable("TransportService");
+
+            // Seed data
+            var londonCity = new City() { Id = 1, Name = "London", Country = "England" };
+            modelBuilder.Entity<City>().SeedData(
+                londonCity,
+                new City() { Id = 2, Name = "Tokyo", Country = "Japan" }
+                );
+...
+```
+
 ## References
 - [Bind SSL Certificate, Azure](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-custom-ssl)

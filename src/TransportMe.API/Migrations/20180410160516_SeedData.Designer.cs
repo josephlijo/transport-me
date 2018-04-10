@@ -12,9 +12,10 @@ using TransportMe.Entities;
 namespace TransportMe.API.Migrations
 {
     [DbContext(typeof(TransportMeContext))]
-    partial class TransportMeContextModelSnapshot : ModelSnapshot
+    [Migration("20180410160516_SeedData")]
+    partial class SeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
