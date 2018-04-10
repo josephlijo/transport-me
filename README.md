@@ -23,3 +23,22 @@ Make sure that the reference is in the *.csproj file.
 - To update the database, instead of `Update-Database`, the dotnet ef tooling command can be used `dotnet ef database update`
 - Reference for [tooling and add-migration](https://github.com/aspnet/EntityFrameworkCore/issues/8996)
 - Reference for [Update-Database CREATE File issue](https://github.com/aspnet/EntityFramework6/issues/384)
+
+### Connection string and sensitive information in Environment Variables
+- We can make use of the `ENVIRONMENT VARIABLES` in project properties to keep sensitive information from being add to version control system. These variables, would be saved in `launchSettings.json` though. 
+```
+"TransportMe.API": {
+    "commandName": "Project",
+    "launchBrowser": true,
+    "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000"
+    }
+}
+```
+- We can remove those, and put them in `System environment variables` to make sure that it is bound to the machine, and not the application. 
+- Use `appsettings.json` for non-sensitive data, use `environment variables` for sensitive information. 
+- [Connection string in Azure](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb#configure-an-environment-variable)
+
+## References
+- [Bind SSL Certificate, Azure](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-custom-ssl)
