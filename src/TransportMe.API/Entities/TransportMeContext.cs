@@ -56,9 +56,5 @@ namespace TransportMe.Entities
                 );
             base.OnModelCreating(modelBuilder);
         }
-
-        private void SeedData()
-        {
-        }
     }
 }

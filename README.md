@@ -47,17 +47,17 @@ Make sure that the reference is in the *.csproj file.
 - Update as of now - Seeding data in `OnModelCreating(ModelBuilder modelBuilder)`
 ```
 protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<City>().ToTable("City");
-            modelBuilder.Entity<TransportMode>().ToTable("TransportMode");
-            modelBuilder.Entity<TransportService>().ToTable("TransportService");
+{
+    modelBuilder.Entity<City>().ToTable("City");
+    modelBuilder.Entity<TransportMode>().ToTable("TransportMode");
+    modelBuilder.Entity<TransportService>().ToTable("TransportService");
 
-            // Seed data
-            var londonCity = new City() { Id = 1, Name = "London", Country = "England" };
-            modelBuilder.Entity<City>().SeedData(
-                londonCity,
-                new City() { Id = 2, Name = "Tokyo", Country = "Japan" }
-                );
+    // Seed data
+    var londonCity = new City() { Id = 1, Name = "London", Country = "England" };
+    modelBuilder.Entity<City>().SeedData(
+        londonCity,
+        new City() { Id = 2, Name = "Tokyo", Country = "Japan" }
+        );
 ...
 ```
 
