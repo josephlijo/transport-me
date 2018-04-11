@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TransportMe.Entities;
 
 namespace TransportMe.API.Services
@@ -13,24 +15,24 @@ namespace TransportMe.API.Services
             this.context = context;
         }
 
-        public void AddCity(City city)
+        public async void AddCityAsync(City city)
         {
-            this.context.Cities.Add(city);
+            await this.context.Cities.AddAsync(city);
         }
 
-        public IEnumerable<City> GetCities()
+        public async Task<IEnumerable<City>> GetCitiesAsync()
         {
-            return this.context.Cities.ToList<City>();
+            return await this.context.Cities.ToListAsync<City>();
         }
 
-        public City GetCity(int cityId)
+        public async Task<City> GetCityAsync(int cityId)
         {
-            return this.context.Cities.Where(c => c.Id == cityId).FirstOrDefault();
+            return await this.context.Cities.Where(c => c.Id == cityId).FirstOrDefaultAsync();
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
-            return this.context.SaveChanges() > 0;
+            return await this.context.SaveChangesAsync() > 0;
         }
     }
 }

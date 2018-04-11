@@ -32,7 +32,7 @@ namespace TransportMe.API.Controllers
         [HttpGet("{cityId}/services")]
         public IActionResult GetServices(int cityId)
         {
-            var selectedCity = this.cityDataRepository.GetCity(cityId);
+            var selectedCity = this.cityDataRepository.GetCityAsync(cityId);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

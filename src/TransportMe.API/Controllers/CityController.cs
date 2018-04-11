@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TransportMe.API.Models;
 using TransportMe.API.Services;
 using TransportMe.Entities;
@@ -18,30 +19,30 @@ namespace TransportMe.API.Controllers
         }
 
         [HttpGet("names")]
-        public IActionResult GetCities()
+        public async Task<IActionResult> GetCitiesAsync()
         {
-            var entityList = this.cityDataRepository.GetCities();
+            var entityList = await this.cityDataRepository.GetCitiesAsync();
             var response = Mapper.Map<IEnumerable<CityDto>>(entityList);
             return Ok(response);
         }
 
         [HttpGet("{cityId}")]
-        public IActionResult GetCity(int cityId)
+        public async Task<IActionResult> GetCityAsync(int cityId)
         {
-            var entity = this.cityDataRepository.GetCity(cityId);
+            var entity = await this.cityDataRepository.GetCityAsync(cityId);
             var response = Mapper.Map<CityDto>(entity);
             return Ok(response);
         }
 
         [HttpPost]
-        public IActionResult AddCity([FromBody] CityDto city)
+        public async Task<IActionResult> AddCity([FromBody] CityDto city)
         {
             var cityToAdd = Mapper.Map<City>(city);
-            this.cityDataRepository.AddCity(cityToAdd);
-            var response = this.cityDataRepository.Save();
+            this.cityDataRepository.AddCityAsync(cityToAdd);
+            var response = await this.cityDataRepository.SaveAsync();
             if (response)
             {
-                return CreatedAtRoute("GetCity", new
+                return CreatedAtRoute("GetCityAsync", new
                 {
                     cityId = cityToAdd.Id
                 }, Mapper.Map<CityDto>(cityToAdd));

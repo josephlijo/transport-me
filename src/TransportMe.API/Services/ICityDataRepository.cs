@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using TransportMe.Entities;
 
 namespace TransportMe.API.Services
 {
     public interface ICityDataRepository
     {
-        IEnumerable<City> GetCities();
+        Task<IEnumerable<City>> GetCitiesAsync();
 
-        City GetCity(int cityId);
+        Task<City> GetCityAsync(int cityId);
 
-        void AddCity(City city);
+        void AddCityAsync(City city);
 
-        bool Save();
+        Task<bool> SaveAsync();
     }
 }
