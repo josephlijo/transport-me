@@ -1,7 +1,12 @@
-## Transport Me
+# Transport Me
 .NET Core 2.0 based Web API which gives transport information in major cities. For example, tube information in London, city details and major tourist destination and how to transport. 
+The purpose of the application is to: 
+- Explore ASP.NET Core Web API & Entity Framework Core (branch `webapi-basic`)
+- Unit Testing, Integration Testing with Web API
+- Docker with Windows
+- Cloud integration with Azure
 
-## ORM via EF Core with ASP.Net Core 2.0
+## EF Core with ASP.NET MVC (Web API)
 - We will see the usage of SQL Server Provider with EF Core
 - The Nuget packages required are:  
     - Microsoft.EntityFrameworkCore.SqlServer (SQL Server database provider for Entity Framework Core)
@@ -62,7 +67,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 ...
 ```
 
-## Using EF Core entities in Web API
+### Using EF Core entities in Web API
 - How can we access the database and provide it to the application?
     - ADO.NET
     - ORM like EF
