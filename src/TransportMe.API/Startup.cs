@@ -58,8 +58,10 @@ namespace TransportMe.API
 
             // Enable Swagger middelware
             app.UseSwagger();
-            app.UseSwaggerUI(c => {
+            app.UseSwaggerUI(c =>
+            {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Transport Me V1");
+                c.RoutePrefix = string.Empty;
             });
 
             app.UseHttpsRedirection();

@@ -4,7 +4,7 @@ using TransportMe.API.Data;
 
 namespace TransportMe.API.Controllers
 {
-    [Route("api/transport")]
+    [Route("api/v1/transport")]
     [ApiController]
     public class TransportController : ControllerBase
     {

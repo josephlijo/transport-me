@@ -3,7 +3,7 @@ using TransportMe.API.Data;
 
 namespace TransportMe.API.Controllers
 {
-    [Route("api/city")]
+    [Route("api/v1/city")]
     public class CityController : Controller
     {
         [HttpGet("names")]
