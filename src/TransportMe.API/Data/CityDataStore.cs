@@ -13,8 +13,8 @@ namespace TransportMe.API.Data
         {
             this.Cities = new List<CityDto>
             {
-                new CityDto() { Id = 1, Name = "London", Country = "England" },
-                new CityDto() { Id = 2, Name = "Tokyo", Country = "Japan" }
+                new CityDto() { Name = "London", Country = "England" },
+                new CityDto() { Name = "Tokyo", Country = "Japan" }
             };
         }
     }

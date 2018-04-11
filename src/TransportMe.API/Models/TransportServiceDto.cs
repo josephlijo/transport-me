@@ -4,12 +4,9 @@ namespace TransportMe.API.Models
 {
     public class TransportServiceDto
     {
-        public int Id { get; set; }
+        public string CityName { get; set; }
 
-        [Required]
-        public int CityId { get; set; }
-
-        public int TransportModeId { get; set; }
+        public string TransportMode { get; set; }
 
         public string Name { get; set; }
 

@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using TransportMe.API.Data;
+using System.Collections.Generic;
+using TransportMe.API.Models;
+using TransportMe.API.Services;
 
 namespace TransportMe.API.Controllers
 {
@@ -8,17 +10,29 @@ namespace TransportMe.API.Controllers
     [ApiController]
     public class TransportController : ControllerBase
     {
+        private readonly ITransportDataRepository transportDataRepository;
+        private readonly ICityDataRepository cityDataRepository;
+
+        public TransportController(
+            ICityDataRepository cityDataRepository,
+            ITransportDataRepository transportDataRepository)
+        {
+            this.cityDataRepository = cityDataRepository;
+            this.transportDataRepository = transportDataRepository;
+        }
+
         [HttpGet("modes")]
         public IActionResult GetModes()
         {
-            var result = TransportDataStore.Current.TransportModes;
-            return this.Ok(result);
+            var entityList = this.transportDataRepository.GetTransportModes();
+            var response = Mapper.Map<IEnumerable<TransportModeDto>>(entityList);
+            return this.Ok(response);
         }
 
         [HttpGet("{cityId}/services")]
         public IActionResult GetServices(int cityId)
         {
-            var selectedCity = CityDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
+            var selectedCity = this.cityDataRepository.GetCity(cityId);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -30,10 +44,9 @@ namespace TransportMe.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var result = TransportDataStore.Current.TransportServices
-                                                   .Where(s => s.CityId == cityId)
-                                                   .ToList();
-            return Ok(result);
+            var entityList = this.transportDataRepository.GetTransportService(cityId);
+            var response = Mapper.Map<IEnumerable<TransportServiceDto>>(entityList);
+            return Ok(response);
         }
     }
 }

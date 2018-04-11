@@ -97,10 +97,16 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 - IQueryable used with EF lets us add further query (order by, where) before the data is pulled out 
 - IQueryable on contrast when used with EF also means that we are leaking persistence related logic out of the repository
 
+### Using Auto-Mapper for converting database entities to View Model (or DTO's)
+- Install the package `AutoMapper`
+- Configure, for example:
+
 ## Help pages and documentation using Swagger (Open API)
 - [Web API Help pages using Swagger](https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-2.1)
 - Using Swashbuckle: 
     - Install the package: `Install-Package Swashbuckle.AspNetCore`
+    - Register it to service collection and include that in the request-response pipeline (`ConfigureServices`)
+
 ## References
 - [Building Your First API with ASP.NET Core](https://app.pluralsight.com/library/courses/asp-dotnet-core-api-building-first) by Kevin Dockx
 - [You're all doing Entity Framework wrong](https://medium.com/@hoagsie/youre-all-doing-entity-framework-wrong-ea0c40e20502)

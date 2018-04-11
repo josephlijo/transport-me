@@ -15,31 +15,31 @@ namespace TransportMe.API.Data
         {
             this.TransportModes = new List<TransportModeDto>
             {
-                new TransportModeDto { Id = 1, Name = "Bus" },
-                new TransportModeDto { Id = 2, Name = "Cable Car" },
-                new TransportModeDto { Id = 3, Name = "Cycle Hire" },
-                new TransportModeDto { Id = 4, Name = "Dlr"  },
-                new TransportModeDto { Id = 5, Name = "National Rail" },
-                new TransportModeDto { Id = 6, Name = "Overground" },
-                new TransportModeDto { Id = 7, Name = "River Bus" },
-                new TransportModeDto { Id = 8, Name = "TFL Rail" },
-                new TransportModeDto { Id = 9, Name = "Tram" },
-                new TransportModeDto { Id = 10, Name = "Tube" }
+                new TransportModeDto { Name = "Bus" },
+                new TransportModeDto { Name = "Cable Car" },
+                new TransportModeDto { Name = "Cycle Hire" },
+                new TransportModeDto { Name = "Dlr"  },
+                new TransportModeDto { Name = "National Rail" },
+                new TransportModeDto { Name = "Overground" },
+                new TransportModeDto { Name = "River Bus" },
+                new TransportModeDto { Name = "TFL Rail" },
+                new TransportModeDto { Name = "Tram" },
+                new TransportModeDto { Name = "Tube" }
             };
 
             this.TransportServices = new List<TransportServiceDto>
             {
-                new TransportServiceDto() { Id = 1, Name="Bakerloo", Description = "", CityId = 1, TransportModeId = 10 },
-                new TransportServiceDto() { Id = 2, Name="Central", Description = "", CityId = 1, TransportModeId = 10 },
-                new TransportServiceDto() { Id = 3, Name="Circle", Description = "", CityId = 1, TransportModeId = 10 },
-                new TransportServiceDto() { Id = 4, Name="District", Description = "", CityId = 1, TransportModeId = 10 },
-                new TransportServiceDto() { Id = 5, Name="Hammersmith & City", Description = "", CityId = 1, TransportModeId = 10 },
-                new TransportServiceDto() { Id = 6, Name="Jubilee", Description = "", CityId = 1, TransportModeId = 10 },
-                new TransportServiceDto() { Id = 7, Name="Metropolitan", Description = "", CityId = 1, TransportModeId = 10 },
-                new TransportServiceDto() { Id = 8, Name="Northern", Description = "", CityId = 1, TransportModeId = 10 },
-                new TransportServiceDto() { Id = 9, Name="Piccadilly", Description = "", CityId = 1, TransportModeId = 10 },
-                new TransportServiceDto() { Id = 10, Name="Victoria", Description = "", CityId = 1, TransportModeId = 10 },
-                new TransportServiceDto() { Id = 11, Name="Waterloo & City", Description = "", CityId = 1, TransportModeId = 10 },
+                new TransportServiceDto() { Name="Bakerloo", Description = "" },
+                new TransportServiceDto() { Name="Central", Description = "" },
+                new TransportServiceDto() { Name="Circle", Description = "" },
+                new TransportServiceDto() { Name="District", Description = "" },
+                new TransportServiceDto() { Name="Hammersmith & City", Description = "" },
+                new TransportServiceDto() { Name="Jubilee", Description = "" },
+                new TransportServiceDto() { Name="Metropolitan", Description = "" },
+                new TransportServiceDto() { Name="Northern", Description = "" },
+                new TransportServiceDto() { Name="Piccadilly", Description = "" },
+                new TransportServiceDto() { Name="Victoria", Description = "" },
+                new TransportServiceDto() { Name="Waterloo & City", Description = "" }
             };
         }
     }

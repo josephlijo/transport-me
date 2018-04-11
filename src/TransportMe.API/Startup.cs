@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using TransportMe.API.Services;
 using TransportMe.Entities;
 
 namespace TransportMe.API
@@ -30,6 +31,9 @@ namespace TransportMe.API
         {
             services.AddDbContext<TransportMeContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("TransportMeDBConnectionString")));
+
+            services.AddTransient<ICityDataRepository, CityDataRepository>();
+            services.AddTransient<ITransportDataRepository, TransportDataRepository>();
 
             services.AddMvc()
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -62,6 +66,17 @@ namespace TransportMe.API
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Transport Me V1");
                 c.RoutePrefix = string.Empty;
+            });
+
+            // Automapper configuration
+            AutoMapper.Mapper.Initialize(config =>
+            {
+                config.CreateMap<Entities.City, Models.CityDto>();
+                config.CreateMap<Models.CityDto, Entities.City>();
+                config.CreateMap<Entities.TransportMode, Models.TransportModeDto>();
+                config.CreateMap<Entities.TransportService, Models.TransportServiceDto>()
+                      .ForMember(dest => dest.CityName, options => options.MapFrom(src => src.City.Name))
+                      .ForMember(dest => dest.TransportMode, options => options.MapFrom(src => src.TransportMode.Name));
             });
 
             app.UseHttpsRedirection();
