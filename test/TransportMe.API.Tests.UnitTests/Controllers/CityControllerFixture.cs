@@ -10,6 +10,7 @@ namespace TransportMe.API.Tests.UnitTests.Controllers
             AutoMapper.Mapper.Initialize(config =>
             {
                 config.CreateMap<Entities.City, Models.CityDto>();
+                config.CreateMap<Models.CityDto, Entities.City>();
             });
         }
 

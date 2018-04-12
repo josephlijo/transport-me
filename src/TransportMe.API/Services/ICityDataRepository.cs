@@ -10,7 +10,7 @@ namespace TransportMe.API.Services
 
         Task<City> GetCityAsync(int cityId);
 
-        void AddCityAsync(City city);
+        Task AddCityAsync(City city);
 
         Task<bool> SaveAsync();
     }

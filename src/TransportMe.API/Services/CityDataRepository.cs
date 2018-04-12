@@ -15,7 +15,7 @@ namespace TransportMe.API.Services
             this.context = context;
         }
 
-        public async void AddCityAsync(City city)
+        public async Task AddCityAsync(City city)
         {
             await this.context.Cities.AddAsync(city);
         }
