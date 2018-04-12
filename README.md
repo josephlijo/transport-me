@@ -2,9 +2,9 @@
 .NET Core 2.0 based Web API which gives transport information in major cities. For example, tube information in London, city details and major tourist destination and how to transport. 
 The purpose of the application is to: 
 - Explore ASP.NET Core Web API & Entity Framework Core (branch `webapi-basic`)
-- Unit Testing, Integration Testing with Web API
-- Docker with Windows
-- Cloud integration with Azure
+- Unit Testing, Integration Testing with Web API (branch `webapi-testing`)
+- Docker with Windows (branch `webapi-docker`)
+- Cloud integration with Azure (branch `webapi-cloud`)
 
 ## EF Core with ASP.NET MVC (Web API)
 - We will see the usage of SQL Server Provider with EF Core

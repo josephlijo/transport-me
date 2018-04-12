@@ -22,16 +22,30 @@ namespace TransportMe.API.Controllers
         public async Task<IActionResult> GetCitiesAsync()
         {
             var entityList = await this.cityDataRepository.GetCitiesAsync();
-            var response = Mapper.Map<IEnumerable<CityDto>>(entityList);
-            return Ok(response);
+            if (entityList != null)
+            {
+                var response = Mapper.Map<IEnumerable<CityDto>>(entityList);
+                return Ok(response);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         [HttpGet("{cityId}")]
         public async Task<IActionResult> GetCityAsync(int cityId)
         {
             var entity = await this.cityDataRepository.GetCityAsync(cityId);
-            var response = Mapper.Map<CityDto>(entity);
-            return Ok(response);
+            if (entity != null)
+            {
+                var response = Mapper.Map<CityDto>(entity);
+                return Ok(response);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         [HttpPost]
