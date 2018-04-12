@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransportMe.API", "src\Tran
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransportMe.API.Tests.UnitTests", "test\TransportMe.API.Tests.UnitTests\TransportMe.API.Tests.UnitTests.csproj", "{A7F9C1CB-AA49-4FEB-9878-4A8BA42692D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransportMe.API.Tests.IntegrationTests", "test\TransportMe.API.Tests.IntegrationTests\TransportMe.API.Tests.IntegrationTests.csproj", "{762868EB-8265-4648-A473-1850A2767A38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A7F9C1CB-AA49-4FEB-9878-4A8BA42692D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7F9C1CB-AA49-4FEB-9878-4A8BA42692D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7F9C1CB-AA49-4FEB-9878-4A8BA42692D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{762868EB-8265-4648-A473-1850A2767A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{762868EB-8265-4648-A473-1850A2767A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{762868EB-8265-4648-A473-1850A2767A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{762868EB-8265-4648-A473-1850A2767A38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
