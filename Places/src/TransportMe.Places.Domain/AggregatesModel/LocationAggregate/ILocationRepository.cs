@@ -9,6 +9,6 @@ namespace TransportMe.Places.Domain.AggregatesModel.LocationAggregate
 
         Location Update(Location location);
 
-        Task<Location> FindAsync(string locationIdentityGuid);
+        Task<Location> GetAsync(string locationIdentityGuid);
     }
 }

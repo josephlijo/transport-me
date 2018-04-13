@@ -4,8 +4,7 @@ using TransportMe.Places.Domain.SeedWork;
 
 namespace TransportMe.Places.Domain.AggregatesModel.LocationAggregate
 {
-    public class Address
-        : ValueObject
+    public class Address : ValueObject
     {
         public String Street { get; }
         public String City { get; }

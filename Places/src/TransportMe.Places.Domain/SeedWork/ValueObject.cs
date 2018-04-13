@@ -15,6 +15,8 @@ namespace TransportMe.Places.Domain.SeedWork
             {
                 return false;
             }
+            // Here if
+            // both are null / both are not null
             return ReferenceEquals(left, null) || left.Equals(right);
         }
 
