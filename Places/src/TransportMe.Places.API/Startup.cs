@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using System;
+using System.Reflection;
+using TransportMe.Places.Infrastructure;
 
 namespace TransportMe.Places.API
 {
@@ -26,6 +23,19 @@ namespace TransportMe.Places.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddEntityFrameworkSqlServer()
+                    .AddDbContext<PlacesContext>(options =>
+                        {
+                            options.UseSqlServer(Configuration["ConnectionString"],
+                                sqlServerOptionsAction: sqlOptions =>
+                                {
+                                    sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
+                                    sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+                                });
+                        },
+                        ServiceLifetime.Scoped  // Showing explicitly that the DbContext is shared across the HTTP request scope (graph of objects started in the HTTP request)
+                    );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

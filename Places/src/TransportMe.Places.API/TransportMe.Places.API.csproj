@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Infrastructure\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -14,6 +15,11 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.1.0-preview1-final" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\TransportMe.Places.Infrastructure\TransportMe.Places.Infrastructure.csproj" />
+    <ProjectReference Include="..\TransportMe.Places.Domain\TransportMe.Places.Domain.csproj" />
   </ItemGroup>
 
 </Project>
