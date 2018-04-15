@@ -18,7 +18,8 @@ namespace TransportMe.Places.Infrastructure
 
         private readonly IMediator _mediator;
 
-        private PlacesContext(DbContextOptions<PlacesContext> options)
+        // TODO:// Make this private after solving DI for IMediator
+        public PlacesContext(DbContextOptions<PlacesContext> options)
             : base(options)
         {
         }

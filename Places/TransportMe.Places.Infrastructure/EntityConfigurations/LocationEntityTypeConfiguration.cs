@@ -37,6 +37,7 @@ namespace TransportMe.Places.Infrastructure.EntityConfigurations
             // Address value object persisted as owned entity type supported since EF Core 2.0
             // Table splitting - address entity details goes to same table as Location
             // https://docs.microsoft.com/en-us/ef/core/modeling/owned-entities
+            // https://github.com/aspnet/EntityFrameworkCore/issues/10089
             builder.OwnsOne(location => location.Address);
         }
     }

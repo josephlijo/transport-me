@@ -26,5 +26,9 @@ namespace TransportMe.Places.Domain.AggregatesModel.LocationAggregate
             this.Description = description;
             this.Address = address;
         }
+
+        protected Location()
+        {
+        }
     }
 }
