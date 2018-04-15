@@ -34,6 +34,7 @@ namespace TransportMe.Places.Infrastructure
         // https://docs.microsoft.com/en-us/ef/core/modeling/#methods-of-configuration
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Configure entity types
             modelBuilder.ApplyConfiguration(new LocationEntityTypeConfiguration());
         }
 

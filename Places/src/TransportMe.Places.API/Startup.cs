@@ -25,8 +25,10 @@ namespace TransportMe.Places.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // MVC settings
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            // EF
             services.AddEntityFrameworkSqlServer()
                     .AddDbContext<PlacesContext>(options =>
                         {
@@ -40,6 +42,10 @@ namespace TransportMe.Places.API
                         ServiceLifetime.Scoped  // Showing explicitly that the DbContext is shared across the HTTP request scope (graph of objects started in the HTTP request)
                     );
 
+            // Settings
+            services.Configure<PlacesSettings>(Configuration);
+
+            // Swagger for documentation
             services.AddSwaggerGen(options =>
             {
                 options.DescribeAllEnumsAsStrings();
@@ -52,6 +58,7 @@ namespace TransportMe.Places.API
                 });
             });
 
+            // CORS Configuration
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
